@@ -1,6 +1,17 @@
 /* Central Mode (client) BLE UART for ESP32
  *
- * A breif explination of BLE client/server actions and rolls:
+ * This sketch is a central mode (client) Nordic UART Service (NUS) that connects automatically to a peripheral (server)
+ * Nordic UART Service. NUS is what most typical "blueart" servers emulate. This sketch will connect to your BLE uart
+ * device in the same manner the nRF Connect app does.
+ *
+ * Once connected this sketch will switch notification on using BLE2902 for the charUUID_TX characteristic which is the
+ * characteristic that our server is making data available on via notification. The data received from the server
+ * characteristic charUUID_TX will be printed to Serial on this device. Every five seconds this device will send the
+ * string "Time since boot: #" to the server characteristic charUUID_RX, this will make that data available in the BLE
+ * uart and trigger a notifyCallback or similar depending on your BLE uart server setup.
+ *
+ *
+ * A brief explanation of BLE client/server actions and rolls:
  *
  * Central Mode (client) - Connects to a peripheral (server).
  *   -Scans for devices and reads service UUID.
@@ -19,18 +30,6 @@
  *   notifications to that characteristic. This the default function on most "Nordic UART Service" BLE uart sketches.
  *
  *
- * This sketch is a central mode (client) Nordic UART Service (NUS) that connects automaticly to a peripheral (server)
- * Nordic UART Service. NUS is what most typical "blueart" servers emulate. This sketch will connect to your BLE uart
- * device in the same manner the nRF Connect app does. NUS info:
- * https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v14.0.0%2Fble_sdk_app_nus_eval.html
- *
- * Once connected this sketch will switch notificaton on using BLE2902 for the charUUID_TX characteristic which is the
- * characteristic that our server is making data availabe on via notification. The data received from the server
- * charUUID_TX characteristic will be printed on to Serial on this device. Every second this device will send the string
- * "Time since boot: #" to the server characteristic charUUID_RX, this will make that data available in the BLE uart and
- * trigger a notifyCallback or similar depending on your BLE uart server setup.
- *
- *
  * Copyright <2018> <Josh Campbell>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
  * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
@@ -46,7 +45,9 @@
  * Based on the "BLE_Client" example by Neil Kolban:
  * https://github.com/nkolban/esp32-snippets/blob/master/cpp_utils/tests/BLETests/Arduino/BLE_client/BLE_client.ino
  * With help from an example by Andreas Spiess:
- * https://github.com/SensorsIot/Bluetooth-BLE-on-Arduino-IDE/blob/master/Polar_H7_Sensor/Polar_H7_Sensor.ino
+ * https://github.com/SensorsIot/Bluetooth-BLE-on-Arduino-IDE/blob/master/Polar_Receiver/Polar_Receiver.ino
+ * Nordic UART Service info:
+ * https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v14.0.0%2Fble_sdk_app_nus_eval.html
  *
  */
 
