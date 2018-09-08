@@ -23,9 +23,23 @@ A brief explanation of BLE client/server actions and rolls:
 * If the server has enabled notifications for the RX characteristic, the client can send data to the server as notifications to that characteristic. This the default function on most "Nordic UART Service" BLE uart sketches.
 
 
+### Testing
+Pictured below is the demo setup I tested this code on. The server is an nRF52 bluefruit feather with various sensors and an OLED. The client is a cheap ESP32 board with integrated OLED "Heltec WiFi Kit 32". Two way communication between both devices works as intended.
+
+![demo](https://github.com/ThingEngineer/ESP32_BLE_client_uart/raw/master/images/demo.jpg)
+
+### Issues with BLE_uart
+I also tried programing another ESP board "ESP32 Dev Module V1.0" with the BLE_uart sketch but this client will not connect to it. As you can see in the photos below, BLE_uart does not appear to be properly advertising the service UUID. You can see the device and it does work once you connect with the app but the client does not see the service UUID advertised in the scan so it never attempts a connection. If someone wants to tackle this I'd be glad to test it agian with the fix.
+
+![nRF Connect Scan](https://github.com/ThingEngineer/ESP32_BLE_client_uart/raw/master/images/nrf_connect_scan.png)
+
+![BLE Client Scan](https://github.com/ThingEngineer/ESP32_BLE_client_uart/raw/master/images/client_scan.png)
+
 Based on the "BLE_Client" example by Neil Kolban:
 https://github.com/nkolban/esp32-snippets/blob/master/cpp_utils/tests/BLETests/Arduino/BLE_client/BLE_client.ino
 With help from an example by Andreas Spiess:
 https://github.com/SensorsIot/Bluetooth-BLE-on-Arduino-IDE/blob/master/Polar_Receiver/Polar_Receiver.ino
+The BLE_uart sketch that does not advertise serviceUUID properly:
+https://github.com/nkolban/ESP32_BLE_Arduino/blob/master/examples/BLE_uart/BLE_uart.ino
 Nordic UART Service info:
 https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v14.0.0%2Fble_sdk_app_nus_eval.html
