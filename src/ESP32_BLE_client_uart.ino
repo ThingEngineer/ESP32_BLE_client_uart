@@ -1,6 +1,6 @@
 /* Central Mode (client) BLE UART for ESP32
  *
- * A breif explination of client/server actions and rolls:
+ * A breif explination of BLE client/server actions and rolls:
  *
  * Central Mode (client) - Connects to a peripheral (server).
  *   -Scans for devices and reads service UUID.
