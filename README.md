@@ -29,7 +29,9 @@ Pictured below is the demo setup I tested this code on. The server is an nRF52 b
 ![demo](https://github.com/ThingEngineer/ESP32_BLE_client_uart/raw/master/images/demo.jpg)
 
 ### Issues with BLE_uart
-I also tried programing another ESP board "ESP32 Dev Module V1.0" with the BLE_uart sketch but this client will not connect to it. As you can see in the photos below, BLE_uart does not appear to be properly advertising the service UUID. You can see the device and it does work once you connect with the app but the client does not see the service UUID advertised in the scan so it never attempts a connection. If someone wants to tackle this I'd be glad to test it agian with the fix.
+I also tried programing another ESP board "ESP32 Dev Module V1.0" with the BLE_uart sketch but this client will not connect to it. As you can see in the photos below, BLE_uart does not appear to be properly advertising the service UUID. You can see the device and it does work once you connect with the app but the client does not see the service UUID advertised in the scan so it never attempts a connection. If someone wants to tackle this I'd be glad to test it again with the fix.
+
+I also noticed that none of the other BLE_* server sketches advertised a serviceUUID that is visible in a scan.
 
 ![nRF Connect Scan](https://github.com/ThingEngineer/ESP32_BLE_client_uart/raw/master/images/nrf_connect_scan.png)
 
