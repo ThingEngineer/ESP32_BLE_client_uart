@@ -39,9 +39,12 @@ I also noticed that none of the other BLE_* server sketches advertised a service
 
 Based on the "BLE_Client" example by Neil Kolban:
 https://github.com/nkolban/esp32-snippets/blob/master/cpp_utils/tests/BLETests/Arduino/BLE_client/BLE_client.ino
+
 With help from an example by Andreas Spiess:
 https://github.com/SensorsIot/Bluetooth-BLE-on-Arduino-IDE/blob/master/Polar_Receiver/Polar_Receiver.ino
+
 The BLE_uart sketch that does not advertise serviceUUID properly:
 https://github.com/nkolban/ESP32_BLE_Arduino/blob/master/examples/BLE_uart/BLE_uart.ino
+
 Nordic UART Service info:
 https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v14.0.0%2Fble_sdk_app_nus_eval.html
